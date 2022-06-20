@@ -63,7 +63,7 @@
     <main>
       <section class="hero overlay">
         <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-        <button type="button" class="button-primari">Заказать услугу</button>
+        <button [data-modal-open] type="button" class="button-primari">Заказать услугу</button>
       </section>
 
       <section class="section-benefits section">
@@ -123,34 +123,24 @@
           <h2 class="picture">Чем мы занимаемся</h2>
           <ul class="list picture-title">
             <li class="picture-list">
-              <div class="picture-box">
-                <img
-                  class="piction-cart"
-                  src="./images/picture1.jpg"
-                  alt="Програмное обеспечение"
-                />
-                <p class="picture-text">Десктопные приложения</p>
-              </div>
+              <img class="piction-cart" src="./images/picture1.jpg" alt="Програмное обеспечение" />
+              <p class="picture-text">Десктопные приложения</p>
             </li>
-            <li>
-              <div class="picture-box">
-                <img
-                  class="piction-cart"
-                  src="./images/picture2.jpg"
-                  alt="Разработка мобильной версии"
-                />
-                <p class="picture-text">Мобильные приложения</p>
-              </div>
+            <li class="picture-list">
+              <img
+                class="piction-cart"
+                src="./images/picture2.jpg"
+                alt="Разработка мобильной версии"
+              />
+              <p class="picture-text">Мобильные приложения</p>
             </li>
-            <li>
-              <div class="picture-box">
-                <img
-                  class="piction-cart"
-                  src="./images/picture3.jpg"
-                  alt="Работа с палитрой цветов"
-                />
-                <p class="picture-text">Дизайнерские решения</p>
-              </div>
+            <li class="picture-list">
+              <img
+                class="piction-cart"
+                src="./images/picture3.jpg"
+                alt="Работа с палитрой цветов"
+              />
+              <p class="picture-text">Дизайнерские решения</p>
             </li>
           </ul>
         </div>
@@ -414,5 +404,11 @@
         </div>
       </div>
     </footer>
+    <div class="backdrop is-hidden" [data-modal]>
+      <div class="modal">
+        <button class="modal-button" [data-modal-close]>x</button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>

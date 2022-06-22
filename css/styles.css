@@ -581,11 +581,13 @@ button {
 }
 .expanding-foto {
   position: relative;
+  overflow: hidden;
 }
-.expanding-foto:hover::before {
-  opacity: 1;
+.expanding-product:hover .expanding-text,
+.expanding-product:focus .expanding-text {
+  transform: translateY(0);
 }
-.expanding-foto::before {
+.expanding-foto {
   display: inline-block;
   position: absolute;
   content: '';
@@ -595,15 +597,18 @@ button {
   opacity: 0;
 }
 .expanding-text {
-  display: inline-block;
   position: absolute;
-  content: '';
-  opacity: 0;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+
+  width: 100%;
+  height: 100%;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.56;
   letter-spacing: 0.03em;
-
+  background-color: var(--accent-color);
   color: #ffffff;
 }
 .product-box {

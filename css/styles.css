@@ -85,6 +85,7 @@ img {
 }
 /* nav */
 .control {
+  position: relative;
   display: flex;
   align-items: center;
   display: block;
@@ -106,8 +107,12 @@ img {
 .control:focus {
   color: var(--accent-color);
 }
-.control.current::after {
-  width: 48px;
+.control.current:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   height: 4px;
   background: #2196f3;
   border-radius: 2px;
@@ -583,24 +588,21 @@ button {
   position: relative;
   overflow: hidden;
 }
+
 .expanding-product:hover .expanding-text,
 .expanding-product:focus .expanding-text {
   transform: translateY(0);
 }
-.expanding-foto {
-  display: inline-block;
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 100%;
-  background-color: rgba(33, 150, 243, 0.9);
-  opacity: 0;
-}
+
 .expanding-text {
   position: absolute;
   top: 0;
   left: 0;
   transform: translateY(100%);
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   width: 100%;
   height: 100%;
@@ -736,6 +738,7 @@ button {
 .modal-button {
   margin-top: 14px;
   margin-right: 14px;
+  margin-left: 490px;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 30px;

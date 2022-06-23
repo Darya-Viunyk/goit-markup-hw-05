@@ -110,7 +110,7 @@ img {
 .control.current:after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   width: 100%;
   height: 4px;
@@ -232,15 +232,18 @@ button {
 .butoon-secondary:focus {
   color: var(--second-accent-color);
   background-color: var(--accent-color);
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12);
-
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
-
-  box-shadow: 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 .button-primari:hover,
 .button-primari:focus {
   background-color: #188ce8;
+}
+.butoon-secondary.active-btn {
+  color: var(--second-accent-color);
+  background-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 .picture-button {
   background: rgba(47, 48, 58, 0.8);
@@ -254,6 +257,7 @@ button {
   justify-content: center;
   background-color: rgba(245, 244, 250, 1);
   width: 270px;
+  height: 120px;
   margin-bottom: 30px;
   border-radius: 4px;
 }
@@ -268,7 +272,7 @@ button {
   display: flex;
 }
 
-.feature-benefits::before {
+/*.feature-benefits::before {
   display: block;
   content: '';
   height: 120px;
@@ -278,7 +282,7 @@ button {
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(245, 244, 250, 1);
-}
+}*/
 
 .feature-list .feature-benefits:not(:last-child) {
   margin-right: 30px;
@@ -377,17 +381,7 @@ button {
   width: 270px;
   background-color: var(--second-accent-color);
 }
-.cart-product {
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.cart-product:hover,
-.cart-product:focus {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-}
 .card .foto {
   width: 270px;
   overflow: hidden;
@@ -495,7 +489,6 @@ button {
 
   border: 1px solid #afb1b8;
   border-radius: 4px;
-  padding: 16px 32px;
 }
 .clients-logo:hover,
 .clients-logo:focus {
@@ -574,11 +567,11 @@ button {
   line-height: 1.88;
   letter-spacing: 0.03em;
 }
+
 .cart-product {
   margin-right: 30px;
   margin-bottom: 30px;
   width: 370px;
-  height: 404px;
 }
 
 .cart-product:nth-child(3n) {
@@ -593,7 +586,15 @@ button {
 .expanding-product:focus .expanding-text {
   transform: translateY(0);
 }
-
+.expanding-product:hover,
+.expanding-product:focus {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+.expanding-product {
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .expanding-text {
   position: absolute;
   top: 0;
@@ -612,6 +613,7 @@ button {
   letter-spacing: 0.03em;
   background-color: var(--accent-color);
   color: #ffffff;
+  padding: 63px 24px;
 }
 .product-box {
   padding: 20px 24px;
@@ -685,7 +687,7 @@ button {
 .link-icon {
   width: 44px;
   height: 44px;
-  margin-left: 10px;
+  gap: 10px;
 }
 .link-item {
   display: flex;
@@ -718,16 +720,28 @@ button {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
 }
+.backdrop.is-hidden.modal {
+  transform: translate(-50%, -50%) scale(0.5);
+}
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   width: 528px;
   height: 581px;
   background: #ffffff;
@@ -736,15 +750,23 @@ button {
   border-radius: 4px;
 }
 .modal-button {
-  margin-top: 14px;
-  margin-right: 14px;
-  margin-left: 490px;
-  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: pointer;
+
+  background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  padding: 6px;
+  padding: 0;
+  top: 8px;
+  right: 8px;
+}
+.close {
+  fill: #000000;
 }
 
 /* второй цвет текста #212121 */
